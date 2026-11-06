@@ -1,0 +1,36 @@
+name: Build Emmet Master Builder
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: EmmetMasterBuilder
+
+    steps:
+      - name: Download source code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: EmmetMasterBuilder/pom.xml
+
+      - name: Build plugin JAR
+        run: mvn -B clean package
+
+      - name: Upload plugin JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: EmmetMasterBuilder-JAR
+          path: EmmetMasterBuilder/target/*.jar
+          if-no-files-found: error
