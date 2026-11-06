@@ -1,0 +1,17 @@
+name: EmmetMasterBuilder
+version: 0.1.0
+main: com.emmetbuilder.EmmetPlugin
+api-version: '1.21.8'
+depend: [Citizens]
+commands:
+  build:
+    description: Summon or dismiss Emmet
+    usage: /build
+    permission: emmet.admin
+  emmet:
+    description: Talk to Emmet or confirm a build
+    usage: /emmet <message|confirm|cancel>
+    permission: emmet.admin
+permissions:
+  emmet.admin:
+    default: op

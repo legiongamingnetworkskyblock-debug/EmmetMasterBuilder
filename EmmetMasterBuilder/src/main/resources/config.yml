@@ -1,0 +1,7 @@
+# Set your API key here on the server. Never share it publicly.
+openai-api-key: ""
+model: "gpt-4.1-mini"
+max-build-blocks: 12000
+# Only build in these worlds. Add the name of a disposable test world.
+allowed-worlds:
+  - "emmet_test"
